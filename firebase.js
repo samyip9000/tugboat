@@ -19,7 +19,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-cosnt app = !getApps().length ? initializeApp(firebaseConfig): getApp();
+const app = !getApps().length ? initializeApp(firebaseConfig): getApp();
 const db = gitFirestore();
 const storage = getStorage();
 export {app, db, storage }; 

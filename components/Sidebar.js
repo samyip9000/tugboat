@@ -11,12 +11,13 @@ import {
   InboxIcon,
   UserIcon,
 } from "@heroicons/react/outline";
-
+import { useSession } from "next-auth/react";
 export default function Sidebar() {
+  const { data: session } = useSession();
   return (
-    <div>
+    <div className="hidden sm:flex flex-col p-2 xl:items-start h-full">
       {/* Twitter Logo */}
-      <div className="hoverEffect">
+      <div className="hoverEffect p-0 hover:bg-blue-100 xl:px-1">
         <Image
           width="50"
           height="50"
@@ -24,8 +25,8 @@ export default function Sidebar() {
         ></Image>
       </div>
       {/* Menu */}
-      <div className="">
-        <SidebarMenuItem text="Home" Icon={HomeIcon} />
+      <div className="mt-4 mb-2.5 xl:items-start">
+        <SidebarMenuItem text="Home" Icon={HomeIcon} active />
         <SidebarMenuItem text="Explore" Icon={HashtagIcon} />
         <SidebarMenuItem text="Notification" Icon={BellIcon} />
         <SidebarMenuItem text="Messages" Icon={InboxIcon} />

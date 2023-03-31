@@ -11,26 +11,30 @@ export default function signin({ providers }) {
         className="hidden object-cover md:w-44 md:h-80 rotate-6  md:inline-flex"
       />
       <div className="">
-        {Object.values(providers).map((provider) => (
-          <div className="flex flex-col items-center">
-            <img
-              className="w-36 object-cover"
-              src="https://help.twitter.com/content/dam/help-twitter/brand/logo.png"
-              alt="twitter logo"
-            />
-            <p className="text-center text-sm italic my-10">
-              This app is created for learning purposes
-            </p>
-            <button
-              onClick={() => signIn(provider.id, { callbackUrl: "/" })}
-              //onClick={onGoogleClick}
-              className="bg-red-400 rounded-lg p-3 text-white hover:bg-red-500"
-            >
-              Sign in with {provider.name}
-            </button>
-          </div>
-        ))}
-         {/* added on 4:21:34 from the video */}
+        {Object.values(providers).map(
+          (
+            provider // what is this providers /provider from??
+          ) => (
+            <div className="flex flex-col items-center">
+              <img
+                className="w-36 object-cover"
+                src="https://help.twitter.com/content/dam/help-twitter/brand/logo.png"
+                alt="twitter logo"
+              />
+              <p className="text-center text-sm italic my-10">
+                This app is created for learning purposes
+              </p>
+              <button
+                onClick={() => signIn(provider.id, { callbackUrl: "/" })}
+                //onClick={onGoogleClick}
+                className="bg-red-400 rounded-lg p-3 text-white hover:bg-red-500"
+              >
+                Sign in with {provider.name}
+              </button>
+            </div>
+          )
+        )}
+        {/* added on 4:21:34 from the video */}
       </div>
     </div>
   );

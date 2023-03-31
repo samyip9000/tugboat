@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp, getApp, getApps } from "firebase/app";
-import {getFirestore} from "firebase/firestore"
-import {getStorage} from "firebase/storage"
+import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -9,7 +9,7 @@ import {getStorage} from "firebase/storage"
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: process.env.FIREBASE_API_KEY ,
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: "accountingapp-3e38e.firebaseapp.com",
   projectId: "accountingapp-3e38e",
   storageBucket: "accountingapp-3e38e.appspot.com",
@@ -19,8 +19,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = !getApps().length ? initializeApp(firebaseConfig): getApp();
-const db = gitFirestore();
+const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+const db = getFirestore();
 const storage = getStorage();
-export {app, db, storage }; 
-
+export { app, db, storage };

@@ -6,6 +6,7 @@ import {
   HeartIcon,
   TrashIcon,
 } from "@heroicons/react/outline";
+import Moment from "react-moment";
 
 export default function Post({ post }) {
   return (
@@ -13,7 +14,7 @@ export default function Post({ post }) {
       {/*user image*/}
       <img
         className="h-11 w-11 rounded-full mr-4 "
-        src={post.userImg}
+        src={post.data().userImg}
         alt="user-img"
       />
 
@@ -27,12 +28,15 @@ export default function Post({ post }) {
 
           <div className="flex space-x-1 whitespace-nowrap ">
             <h4 className="font-bold text-[15px] sm:text-[16px] hover:underline">
-              {post.name}
+              {post.data().name}
             </h4>
-            <span className="text-sm sm:text-[15px]"> @{post.username} - </span>
-            <span className="text-sm sm:text-[15px] hover:underline">
+            <span className="text-sm sm:text-[15px]">
               {" "}
-              {post.timestamp}
+              @{post.data().username} -{" "}
+            </span>
+            <span className="text-sm sm:text-[15px] hover:underline">
+          
+            <Moment fromNow>{post?.timestamp?.toDate()}</Moment>
             </span>
           </div>
           {/* dot icon */}
@@ -43,12 +47,12 @@ export default function Post({ post }) {
 
         <p className="text-gray-800 text-[15px] sm:text-[16px] mb-2">
           {" "}
-          {post.text}
+          {post.data().text}
         </p>
 
         {/*post  image*/}
 
-        <img className="rounded-2xl mr-2" src={post.img} alt="" />
+        <img className="rounded-2xl mr-2" src={post.data().image} alt="" />
 
         {/*icons*/}
 

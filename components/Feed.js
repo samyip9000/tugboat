@@ -6,20 +6,20 @@ export default function Feed() {
   const posts = [
     {
       id: "1",
-      name: "Sahand Ghavidal",
-      username: "Codewithsahand",
+      name: "Gordon Bread",
+      username: "gordonbread",
       userImg:
         "https://pbs.twimg.com/profile_images/1608511415010181125/5guBM8qs_400x400.jpg",
       img: "https://images.unsplash.com/photo-1679926820639-56c6f62e516e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-      text: "nice view!",
-      timestamp: "2 hours ago",
+      text: "Me in action!",
+      timestamp: "2 hours ago", 
     },
     {
       id: "2",
-      name: "Sahand Ghavidal",
-      username: "Codewithsahand",
+      name: "David Charlton",
+      username: "davidcharlton",
       userImg:
-        "https://pbs.twimg.com/profile_images/1608511415010181125/5guBM8qs_400x400.jpg",
+        "https://pbs.twimg.com/profile_images/1625503142199832576/uDe2n6ml_400x400.jpg",
       img: "https://images.unsplash.com/photo-1544896916-6c9b00a2ca30?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
       text: "nice shot",
       timestamp: "2 months ago",

@@ -11,11 +11,11 @@ import {
   InboxIcon,
   UserIcon,
 } from "@heroicons/react/outline";
-import { useSession, signIn } from "next-auth/react";
+import { useSession, signIn, signOut } from "next-auth/react";
 export default function Sidebar() {
   const { data: session } = useSession();
   return (
-    <div className="hidden sm:flex flex-col p-2 xl:items-start h-full xl:ml-24">
+    <div className="hidden sm:flex flex-col p-2 xl:items-start fixed h-full xl:ml-24">
       {/* Twitter Logo */}
       <div className="hoverEffect p-0 hover:bg-blue-100 xl:px-1">
         <Image
@@ -44,7 +44,7 @@ export default function Sidebar() {
 
       {session ? (
         <>
-          <button className="bg-blue-400 text-white rounded-full w-56 h-12 font-bold shadow-md hover:brightness-95 text-lg xl:inline">
+          <button className="bg-blue-400 text-white rounded-full w-56 h-12 font-bold shadow-md hover:brightness-95 text-lg xl:inline hidden">
             Tweet
           </button>
           {/* Mini-Profile */}
@@ -65,6 +65,8 @@ export default function Sidebar() {
           Sign in
         </button>
       )}
+
+      <button onClick={signOut}> Sign out</button>
     </div>
   );
 }

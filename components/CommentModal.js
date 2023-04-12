@@ -1,17 +1,25 @@
-import { Snapshot, useRecoilState } from "recoil";
+import { snapshot, useRecoilState } from "recoil";
 import { modalState, postIdState } from "../atom/modalAtom";
+import { useRouter } from "next/router";
 import Modal from "react-modal";
 import {
   EmojiHappyIcon,
   PhotographIcon,
   XIcon,
 } from "@heroicons/react/outline";
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { db } from "@/firebase";
-import { doc, onSnapshot } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  doc,
+  onSnapshot,
+  serverTimestamp,
+} from "firebase/firestore";
 import Moment from "react-moment";
 import { useSession } from "next-auth/react";
-import Input from "./Input";
+
+// import Input from "./Input";
 
 export default function CommentModal() {
   const [open, setOpen] = useRecoilState(modalState);
@@ -19,6 +27,7 @@ export default function CommentModal() {
   const [post, setPost] = useState({});
   const [input, setInput] = useState("");
   const { data: session } = useSession();
+  const router = useRouter();
 
   useEffect(() => {
     onSnapshot(doc(db, "posts", postId), (snapshot) => {
@@ -26,7 +35,19 @@ export default function CommentModal() {
     });
   }, [postId, db]);
 
-  function sendComment() {}
+  async function sendComment() {
+    await addDoc(collection(db, "posts", postId, "comments"), {
+      comment: input,
+      name: session.user.name,
+      username: session.user.username,
+      userImg: session.user.image,
+      timestamp: serverTimestamp(),
+    });
+
+    setOpen(false);
+    setInput("");
+    router.push(`posts/${postId}`);
+  }
 
   return (
     <div>
@@ -63,7 +84,9 @@ export default function CommentModal() {
                 <Moment fromNow>{post?.data()?.timestamp?.toDate()}</Moment>
               </span>
             </div>
-            <p className= "text-gray-500  text-[15px] sm:text-[16px] ml-16 mb-2 ">{post?.data()?.text}</p>
+            <p className="text-gray-500  text-[15px] sm:text-[16px] ml-16 mb-2 ">
+              {post?.data()?.text}
+            </p>
 
             <div className="flex border-b border-gray-200 p-3 space-x-3">
               <img
@@ -78,7 +101,7 @@ export default function CommentModal() {
                     className="w-full border-none focus:ring-0 text-lg placeholder-gray-700 tracking-wide min-h-[50px]  text-gray-700"
                     rows="2"
                     placeholder="Tweet your reply"
-                    value={Input}
+                    value={input}
                     onChange={(e) => setInput(e.target.value)}
                   ></textarea>
                 </div>

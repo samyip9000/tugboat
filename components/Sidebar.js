@@ -15,7 +15,7 @@ import { useSession, signIn, signOut } from "next-auth/react";
 export default function Sidebar() {
   const { data: session } = useSession();
   return (
-    <div className="hidden sm:flex flex-col p-2 xl:items-start fixed h-full xl:ml-24">
+    <div className=" sm:flex flex-col p-2 xl:items-start fixed h-full xl:ml-24">
       {/* Twitter Logo */}
       <div className="hoverEffect p-0 hover:bg-blue-100 xl:px-1">
         <Image
@@ -25,9 +25,13 @@ export default function Sidebar() {
         ></Image>
       </div>
       {/* Menu */}
-      <div className="mt-4 mb-2.5 xl:items-start">
-        <SidebarMenuItem text="Home" Icon={HomeIcon} active />
-        <SidebarMenuItem text="Explore" Icon={HashtagIcon} />
+      <div className=" mt-4 mb-2.5 xl:items-start">
+        <SidebarMenuItem text="Home" Icon={HomeIcon} />
+        <SidebarMenuItem
+          className="align-left"
+          text="Explore"
+          Icon={HashtagIcon}
+        />
 
         {session && (
           <>
@@ -44,7 +48,7 @@ export default function Sidebar() {
 
       {session ? (
         <>
-          <button className="bg-blue-400 text-white rounded-full w-56 h-12 font-bold shadow-md hover:brightness-95 text-lg xl:inline hidden">
+          <button className="bg-blue-400 text-white rounded-full w-56 h-12 font-bold shadow-md hover:brightness-95 text-lg hidden xl:inline ">
             Tweet
           </button>
           {/* Mini-Profile */}
@@ -53,7 +57,7 @@ export default function Sidebar() {
               <h4>{session.user.name}</h4>
               <p>@financeSam</p>
             </div>
-            <DotsHorizontalIcon className="h-5 xl:ml-8 xl:inline" />
+            <DotsHorizontalIcon className="h-5 xl:ml-8 hidden xl:inline" />
           </div>
         </>
       ) : (

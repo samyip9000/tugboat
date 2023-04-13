@@ -1,8 +1,8 @@
-import { db } from "@/firebase";
 import { SparklesIcon } from "@heroicons/react/outline";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { db } from "@/firebase";
 import Input from "./Input";
 import Post from "./Post";
 
@@ -39,7 +39,7 @@ export default function Feed() {
             exit={{ opacity: 0 }}
             transition={{ duration: 2 }}
           >
-            <Post key={post.id} post={post} />
+            <Post key={post.id} id={post.id} post={post} />
           </motion.div>
         ))}
       </AnimatePresence>

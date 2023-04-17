@@ -5,7 +5,13 @@ import { Inter } from "next/font/google";
 import CommentModal from "@/components/CommentModal";
 import Sidebar from "@/components/Sidebar";
 import Widgets from "@/components/Widgets";
-import { collection, doc, onSnapshot, orderBy, query } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  onSnapshot,
+  orderBy,
+  query,
+} from "firebase/firestore";
 import { db } from "@/firebase";
 import { useEffect, useState } from "react";
 import Comment from "@/components/Comment";
@@ -15,11 +21,11 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function PostPage({ newsResults, randomUsersResults }) {
   const router = useRouter();
-  const { id } = router.query;  //Easily use query parameter value 
+  const { id } = router.query; //Easily use query parameter value
   const [post, setPost] = useState();
   const [comments, setComments] = useState([]);
 
-// get the post data
+  // get the post data
 
   useEffect(
     () => onSnapshot(doc(db, "posts", id), (snapshot) => setPost(snapshot)),
@@ -28,8 +34,7 @@ export default function PostPage({ newsResults, randomUsersResults }) {
 
   //get comments of the post
 
-  useEffect(
-    () => {
+  useEffect(() => {
     onSnapshot(
       query(
         collection(db, "posts", id, "comments"),
@@ -65,14 +70,20 @@ export default function PostPage({ newsResults, randomUsersResults }) {
             <Post id={id} post={post} />
 
             {comments.length > 0 && (
-            <div className="">
-                {comments.map((comment) => (
-                  <Comment
-                    key={comment.id}
-                    id={comment.id}
-                    comment={comment.data()}
-                  />
-                ))}
+              <div className="">
+                {comments.map(
+                  (
+                    comment // showing all the comemnts here
+                  ) => (
+                    <Comment
+                      key={comment.id}
+                      id={comment.id}
+                      originalPostId={id}
+                      commentId={comment.id}   // Added by Sam and diff from the video
+                      comment={comment.data()}
+                    />
+                  )
+                )}
               </div>
             )}
           </div>

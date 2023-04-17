@@ -1,7 +1,7 @@
 import Image from "next/image";
 import SidebarMenuItem from "./SidebarMenuItem";
-import { HomeIcon } from "@heroicons/react/solid";
 import {
+  HomeIcon,
   BellIcon,
   BookmarkIcon,
   ClipboardIcon,
@@ -10,6 +10,7 @@ import {
   HashtagIcon,
   InboxIcon,
   UserIcon,
+  ArrowCircleLeftIcon
 } from "@heroicons/react/outline";
 import { useSession, signIn, signOut } from "next-auth/react";
 export default function Sidebar() {
@@ -26,12 +27,8 @@ export default function Sidebar() {
       </div>
       {/* Menu */}
       <div className=" mt-4 mb-2.5 xl:items-start">
-        <SidebarMenuItem text="Home" Icon={HomeIcon} />
-        <SidebarMenuItem
-          className="align-left"
-          text="Explore"
-          Icon={HashtagIcon}
-        />
+        <SidebarMenuItem text="Home" Icon={HomeIcon} active/>
+        <SidebarMenuItem text="Explore" Icon={HashtagIcon} />
 
         {session && (
           <>
@@ -41,6 +38,7 @@ export default function Sidebar() {
             <SidebarMenuItem text="Lists" Icon={ClipboardIcon} />
             <SidebarMenuItem text="Profile" Icon={UserIcon} />
             <SidebarMenuItem text="More" Icon={DotsCircleHorizontalIcon} />
+        
           </>
         )}
       </div>
@@ -52,13 +50,24 @@ export default function Sidebar() {
             Tweet
           </button>
           {/* Mini-Profile */}
-          <div>
-            <div className="">
-              <h4>{session.user.name}</h4>
-              <p>@financeSam</p>
+
+          <div className="hoverEffect text-gray-700 flex items-center justify-center xl:justify-start mt-auto">
+            <img
+              src={session.user.image}
+              alt="user-img"
+              className="h-10 w-10 rounded-full xl:mr-2"
+            />
+            <div className="leading-5 hidden xl:inline">
+              <h4 className="font-bold">{session.user.name}</h4>
+              <p className="text-gray-500">@{session.user.username}</p>
             </div>
             <DotsHorizontalIcon className="h-5 xl:ml-8 hidden xl:inline" />
           </div>
+          <SidebarMenuItem
+            actionOnClick={signOut}
+            text="Sign out"
+            Icon={ArrowCircleLeftIcon}
+          />
         </>
       ) : (
         <button
@@ -69,8 +78,6 @@ export default function Sidebar() {
           Sign in
         </button>
       )}
-
-      <button onClick={signOut}> Sign out</button>
     </div>
   );
 }

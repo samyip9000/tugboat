@@ -37,7 +37,7 @@ export default function Input() {
 
     const imageRef = ref(storage, `posts/${docRef.id}/image`);
 
-    if (setSelectedFile) {
+    if (selectedFile) { //If there is a link created in  SelectedFile(readerEvent.target.result);
       await uploadString(imageRef, selectedFile, "data_url").then(async () => {
         const downloadURL = await getDownloadURL(imageRef);
         await updateDoc(doc(db, "posts", docRef.id), {

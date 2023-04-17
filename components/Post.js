@@ -104,7 +104,7 @@ export default function Post({ post, id }) {
               @{post?.data()?.username} -{" "}
             </span>
             <span className="text-sm sm:text-[15px] hover:underline">
-              <Moment fromNow>{post?.data().timestamp?.toDate()}</Moment>
+              <Moment fromNow>{post?.data()?.timestamp?.toDate()}</Moment>
             </span>
           </div>
           {/* dot icon */}

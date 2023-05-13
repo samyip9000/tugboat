@@ -6,7 +6,7 @@ import {
   HeartIcon,
   TrashIcon,
 } from "@heroicons/react/outline";
-import { HeartIcon as HeartIconFilled } from "@heroicons/react/solid";
+import { HeartIcon as HeartIconFilled, EyeIcon as EyeIconFilled } from "@heroicons/react/solid";
 import {
   collection,
   deleteDoc,
@@ -158,27 +158,27 @@ export default function Post({ post, id }) {
 
           <div className="flex items-center">
             {hasLiked ? (
-              <HeartIconFilled
+              <EyeIconFilled
                 onClick={likePost}
-                className="h-10 w-10 hoverEffect p-2 text-red-500 hover:text-red-500 hover:bg-sky-100"
+                className="h-10 w-10 hoverEffect p-2 text-green-500 hover:text-green-500 hover:bg-sky-100"
               />
             ) : (
-              <HeartIcon
+              <EyeIcon
                 onClick={likePost}
-                className="h-10 w-10 hoverEffect p-2 hover:text-red-500 hover:bg-sky-100"
+                className="h-10 w-10 hoverEffect p-2 hover:text-green-500 hover:bg-green-100"
               />
             )}
 
             {likes.length > 0 && (
               <span
-                className={`${hasLiked && "text-red-600"} text-sm select-none`}
+                className={`${hasLiked && "text-green-600"} text-sm select-none`}
               >
                 {likes.length}
               </span>
             )}
           </div>
 
-          <EyeIcon className="h-10 w-10 hoverEffect p-2 hover:bg-sky-100" />
+         
           <ChartBarIcon className="h-10 w-10 hoverEffect p-2 hover:bg-sky-100" />
         </div>
       </div>

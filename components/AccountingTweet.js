@@ -1,10 +1,11 @@
-// This 'input.js' is the original code from the video is not showing in the 'feed' in the main page because Sam want to be able to revert back to it incase AccountingTweet.js is not working.
-
 import {
   EmojiHappyIcon,
   PhotographIcon,
   XIcon,
 } from "@heroicons/react/outline";
+
+import AccountBalanceOutlinedIcon from "@mui/icons-material/AccountBalanceOutlined";
+import AccountTreeOutlinedIcon from "@mui/icons-material/AccountTreeOutlined";
 import {
   addDoc,
   collection,
@@ -12,12 +13,12 @@ import {
   serverTimestamp,
   updateDoc,
 } from "firebase/firestore";
-import { useSession, signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { useRef, useState } from "react";
 import { db, storage } from "@/firebase";
 import { getDownloadURL, ref, uploadString } from "firebase/storage";
 
-export default function Input() {
+export default function AccountingTweet() {
   const { data: session } = useSession();
   const [input, setInput] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
@@ -69,7 +70,6 @@ export default function Input() {
       {session && (
         <div className="flex border-b border-gray-200 p-3 space-x-3">
           <img
-            onClick={signOut}
             src={session.user.image}
             alt="user-img"
             className="h-11 w-11 rounded-full cursor-pointer hover:brightness-90"
@@ -80,7 +80,7 @@ export default function Input() {
               <textarea
                 className="w-full border-none focus:ring-0 text-lg placeholder-gray-700 tracking-wide min-h-[50px]  text-gray-700"
                 rows="2"
-                placeholder="What's happening"
+                placeholder="jot down here..."
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
               ></textarea>
@@ -115,13 +115,20 @@ export default function Input() {
                       />
                     </div>
                     <EmojiHappyIcon className="h-10 w-10 hoverEffect p-2 text-sky-500 hover:bg-sky-100" />
+                    <AccountBalanceOutlinedIcon className="  pt-1 hoverEffect text-sky-500 hover:bg-sky-100" />
+
+                    <AccountTreeOutlinedIcon
+                      disableElevation
+                      className="hoverEffect text-sky-500 hover:bg-sky-100 pt-0.1 pt-1"
+                      variant="contained"
+                    />
                   </div>
                   <button
                     onClick={sendPost}
                     disabled={!input.trim()}
-                    className="bg-blue-400 text-white px-4 py-1.5 rounded-full font-bold shadow-md hover:brightness-95 disabled:opacity-50"
+                    className="bg-yellow-100 text-blue px-4 py-1.5 rounded-full font-bold shadow-md hover:brightness-95 disabled:opacity-50"
                   >
-                    Tweet
+                    Scribble
                   </button>
                 </>
               )}

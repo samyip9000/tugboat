@@ -18,8 +18,8 @@ import {
 } from "firebase/firestore";
 import Moment from "react-moment";
 import { useSession } from "next-auth/react";
-
-// import Input from "./Input";
+import AccountingTweet from "./AccountingTweet";
+import Input from "./Input";
 
 export default function CommentModal() {
   const [open, setOpen] = useRecoilState(modalState);
@@ -42,7 +42,7 @@ export default function CommentModal() {
       username: session.user.username,
       userImg: session.user.image,
       timestamp: serverTimestamp(),
-      userId: session.user.uid, 
+      userId: session.user.uid,
     });
 
     setOpen(false);
@@ -112,6 +112,8 @@ export default function CommentModal() {
                     <div
                       className=""
                       onClick={() => filePickerRef.current.click()}
+
+                      // This onClick doesn't work, why?  Was it meant to be not working from the video?
                     >
                       <PhotographIcon className="h-10 w-10 hoverEffect p-2 text-sky-500 hover:bg-sky-100" />
                       {/* <input
@@ -126,9 +128,9 @@ export default function CommentModal() {
                   <button
                     onClick={sendComment}
                     disabled={!input.trim()}
-                    className="bg-blue-400 text-white px-4 py-1.5 rounded-full font-bold shadow-md hover:brightness-95 disabled:opacity-50"
+                    className="bg-yellow-100 text-blue px-4 py-1.5 rounded-full font-bold shadow-md hover:brightness-95 disabled:opacity-50"
                   >
-                    Reply
+                    Remark
                   </button>
                 </div>
               </div>

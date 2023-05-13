@@ -1,3 +1,6 @@
+// From tutorial: https://youtu.be/PnvDPSg5bQM
+// Code reference: https://github.com/sahandghavidel/twitter
+
 import Head from "next/head";
 import { Inter } from "next/font/google";
 import Sidebar from "@/components/Sidebar";
@@ -26,6 +29,9 @@ export default function Home({newsResults}) {
           <Feed />
           {/* Widgets */}
           <Widgets newsResults={newsResults.articles}/>
+
+
+
           {/* Modal */}
 
           <CommentModal/>

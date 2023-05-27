@@ -19,7 +19,7 @@ import {
 import Moment from "react-moment";
 import { useSession } from "next-auth/react";
 import AccountingTweet from "./AccountingTweet";
-import Input from "./Input";
+// import Input from "./Input";
 
 export default function CommentModal() {
   const [open, setOpen] = useRecoilState(modalState);
@@ -56,10 +56,10 @@ export default function CommentModal() {
         <Modal
           isOpen={open}
           onRequestClose={() => setOpen(false)}
-          className="max-w-lg w-[90%] absolute top-24 left-[50%] translate-x-[-50%] bg-white border-1 border-gray-200 rounded-xl shadow-md "
+          className="max-w-lg w-[90%] absolute top-24 left-[50%] translate-x-[-50%] bg-white border-1 border-blue-200 rounded-xl shadow-md "
         >
           <div className="p-1">
-            <div className="border-b border-gray-200 py-2 px-1.5">
+            <div className="border-b border-blue-200 py-2 px-1.5">
               <div
                 onClick={() => setOpen(false)}
                 className="hoverEffect w-9 h-9 flex items-center justify-center"
@@ -89,7 +89,7 @@ export default function CommentModal() {
               {post?.data()?.text}
             </p>
 
-            <div className="flex border-b border-gray-200 p-3 space-x-3">
+            <div className="flex border-b border-blue-200 p-3 space-x-3">
               <img
                 src={session.user.image}
                 alt="user-img"

@@ -9,7 +9,7 @@ export default function News({ article }) {
           </p>
         </div>
         <img
-          className="rounded-x1 "
+          className="rounded-xl "
           width="70"
           src={article.urlToImage}
           alt=""

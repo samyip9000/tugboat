@@ -23,6 +23,8 @@ import Moment from "react-moment";
 import { useRecoilState } from "recoil";
 import { modalState, postIdState } from "@/atom/modalAtom";
 import { useRouter } from "next/router";
+import AccordionButton from "./AccordionButton";
+// import Collapse from "./Collapse";
 
 export default function Post({ post, id }) {
   const { data: session } = useSession();
@@ -79,7 +81,7 @@ export default function Post({ post, id }) {
   }
 
   return (
-    <div className="flex border-b border-gray-200 p-3 space-x-3 cursor-pointer">
+    <div className="flex border-b border-blue-200 p-3 space-x-3 cursor-pointer">
       {/*user image*/}
       <img
         className="h-11 w-11 rounded-full mr-4 "
@@ -171,15 +173,24 @@ export default function Post({ post, id }) {
 
             {likes.length > 0 && (
               <span
-                className={`${hasLiked && "text-green-600"} text-sm select-none`}
+                className={`${
+                  hasLiked && "text-green-600"
+                } text-sm select-none`}
               >
                 {likes.length}
               </span>
             )}
           </div>
 
-         
           <ChartBarIcon className="h-10 w-10 hoverEffect p-2 hover:bg-sky-100" />
+          {/* <Collapse
+            toggleButtonOne={toggleButtonOne}
+            toggleButtonTwo={toggleButtonTwo}
+            toggleButtonThree={toggleButtonThree}
+            toggleButtonFour={toggleButtonFour}
+            toggleButtonFive={toggleButtonFive}
+            toggleButtonSix={toggleButtonSix}
+          /> */}
         </div>
       </div>
     </div>

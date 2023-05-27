@@ -68,7 +68,7 @@ export default function AccountingTweet() {
   return (
     <>
       {session && (
-        <div className="flex border-b border-gray-200 p-3 space-x-3">
+        <div className="flex border-b border-blue-200 p-3 space-x-3">
           <img
             src={session.user.image}
             alt="user-img"
@@ -106,7 +106,7 @@ export default function AccountingTweet() {
                       className=""
                       onClick={() => filePickerRef.current.click()}
                     >
-                      <PhotographIcon className="h-10 w-10 hoverEffect p-2 text-sky-500 hover:bg-sky-100" />
+                      <PhotographIcon className="h-10 w-10 hoverEffect p-2 text-yellow-500 hover:bg-yellow-100" />
                       <input
                         type="file"
                         hidden
@@ -114,7 +114,7 @@ export default function AccountingTweet() {
                         onChange={addImageToPost}
                       />
                     </div>
-                    <EmojiHappyIcon className="h-10 w-10 hoverEffect p-2 text-sky-500 hover:bg-sky-100" />
+                    <EmojiHappyIcon className="h-10 w-10 hoverEffect p-2 text-yellow-500 hover:bg-yellow-100" />
                     <AccountBalanceOutlinedIcon className="  pt-1 hoverEffect text-sky-500 hover:bg-sky-100" />
 
                     <AccountTreeOutlinedIcon

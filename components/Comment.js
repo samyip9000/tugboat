@@ -90,7 +90,7 @@ export default function Comment({ comment, commentId, originalPostId }) {
   }
 
   return (
-    <div className="flex border-b border-gray-200 p-3 space-x-3 cursor-pointer pl-20">
+    <div className="flex border-b border-blue-200 p-3 space-x-3 cursor-pointer pl-20">
       {/*user image*/}
       <img
         className="h-11 w-11 rounded-full mr-4 "

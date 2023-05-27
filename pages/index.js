@@ -6,12 +6,11 @@ import { Inter } from "next/font/google";
 import Sidebar from "@/components/Sidebar";
 import Feed from "@/components/Feed";
 import Widgets from "@/components/Widgets";
-import CommentModal from '@/components/CommentModal.js'
-
+import CommentModal from "@/components/CommentModal.js";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home({newsResults}) {
+export default function Home({ newsResults }) {
   return (
     <>
       <div>
@@ -28,20 +27,16 @@ export default function Home({newsResults}) {
           {/* Feed */}
           <Feed />
           {/* Widgets */}
-          <Widgets newsResults={newsResults.articles}/>
-
-
+          <Widgets newsResults={newsResults.articles} />
 
           {/* Modal */}
 
-          <CommentModal/>
+          <CommentModal />
         </main>
       </div>
     </>
   );
 }
-
-//https://saurav.tech/NewsAPI/top-headlines/category/business/us.json
 
 export async function getServerSideProps() {
   const newsResults = await fetch(
